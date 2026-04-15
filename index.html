@@ -338,8 +338,8 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Gemini API Caller
-    async function callGemini(prompt) {
+// Gemini API Caller (CORRIGIDO)
+async function callGemini(prompt) {
     try {
         const response = await fetch("https://rende-repoo3.onrender.com/gemini", {
             method: "POST",
@@ -352,6 +352,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = await response.json();
 
         return result.text;
+
+    } catch (error) {
+        console.error("Erro:", error);
+        return "Erro de conexão com servidor.";
+    }
 }
 
     function showLoader(element) {
