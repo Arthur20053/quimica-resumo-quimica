@@ -351,17 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const result = await response.json();
 
-        if (
-            result.candidates &&
-            result.candidates[0].content.parts[0].text
-        ) {
-            return result.candidates[0].content.parts[0].text;
-        } else {
-            return "Erro ao obter resposta.";
-        }
-    } catch (error) {
-        return "Erro de conexão com servidor.";
-    }
+        return result.text;
 }
 
     function showLoader(element) {
