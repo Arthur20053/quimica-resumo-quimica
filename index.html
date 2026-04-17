@@ -339,6 +339,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 // OpenRouter API Caller (CORRIGIDO)
+
 async function callGemini(prompt) {
     const apiKey = "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";
 
@@ -354,17 +355,14 @@ async function callGemini(prompt) {
             body: JSON.stringify({
                 model: "openchat/openchat-7b:free",
                 messages: [
-                    {
-                        role: "user",
-                        content: prompt
-                    }
+                    { role: "user", content: prompt }
                 ]
             })
         });
 
         const data = await response.json();
 
-        console.log(data); // 👈 importante pra ver erro
+        console.log("RESPOSTA:", data); // 👈 ESSENCIAL
 
         if (data.choices && data.choices.length > 0) {
             return data.choices[0].message.content;
@@ -373,11 +371,10 @@ async function callGemini(prompt) {
         }
 
     } catch (error) {
-        console.error(error);
-        return "Erro de conexão com IA.";
+        console.error("ERRO:", error);
+        return "Erro de conexão.";
     }
 }
-
     // Tab Navigation
     const tabButtons = document.querySelectorAll('.tab-btn');
     const contentSections = document.querySelectorAll('.content-section');
